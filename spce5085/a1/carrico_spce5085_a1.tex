@@ -1,0 +1,187 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,setspace}
+
+\textwidth 7.0 truein
+\oddsidemargin -0.25in   %left-hand edge
+\evensidemargin -0.5 truein  %right-hand edge
+\topmargin -0.85in      %top of paper to top of head, pulls whole unit
+\textheight 9.5in
+
+%%%% Custom commands %%%%
+
+% Box/square the final answer
+\newcommand{\ans}[1]{\boxed{#1}}
+
+\newcommand{\degree}{\ensuremath{^{\circ}}}
+
+% Shared indentation lengths for subproblems and solutions
+\newlength{\subproblemindent}
+\setlength{\subproblemindent}{1.5em}
+\newlength{\subproblemlabelwidth}
+\setlength{\subproblemlabelwidth}{2em}
+\newlength{\solutionindent}
+\setlength{\solutionindent}{3em}
+
+% Bold a top-level problem: number and text separated by an em-dash
+\newcommand{\problem}[2]{\vspace{1em}\noindent\textbf{#1} --- #2\par\vspace{0.25em}}
+
+% Bold and indent a subproblem: letter and text separated by an em-dash
+\newcommand{\subproblem}[2]{%
+  \par\vspace{0.25em}%
+  \noindent
+  \hangindent=\dimexpr\subproblemindent+\subproblemlabelwidth+0.5em\relax
+  \hangafter=1
+  \hspace*{\subproblemindent}%
+  \makebox[\subproblemlabelwidth][l]{\textbf{#1}}#2\par
+}
+
+% Indent all lines of the answer/solution block
+\newcommand{\solution}[1]{%
+  \par\vspace{0.0em}%
+  \begin{list}{}{
+    \setlength{\leftmargin}{\solutionindent}
+    \setlength{\rightmargin}{0pt}
+    \setlength{\listparindent}{0pt}
+    \setlength{\itemindent}{0pt}
+    \setlength{\parsep}{0pt}
+  }%
+    \item\relax
+    \begingroup
+      \setlength{\baselineskip}{2.0\baselineskip}
+      \setlength{\lineskip}{2.0\lineskip}
+      \setlength{\parskip}{0pt}
+      \everymath{\displaystyle}
+      #1
+      \par
+    \endgroup
+  \end{list}%
+  \vspace{0.25em}%
+}
+
+\begin{document}
+\hfill Christian Carrico
+
+\hfill SPCE 5085
+
+\hfill Assignment \#1
+
+\problem{2.2}{A satellite is in a circular orbit at an altitude of 350 km. Determine}
+
+\subproblem{a.}{The orbital angular velocity in radians per second.}
+
+\solution{
+$angular\ velocity = \omega = \sqrt{\frac{GM}{r^3}} $ \\
+$orbital\ radius = r = R_{Earth} + h = 6378.137\ km + 350\ km = 6728.137\ km $ \\
+$\omega = \sqrt{\frac{3.986004418e5\ km^3/s^2}{(6728.137\ km)^3}} = 0.001008650132925822\ rad/s$ \\
+\ans{angular\ velocity = 0.001008650132925822 rad/s}
+}
+
+\subproblem{b.}{The orbital period in minutes.}
+
+\solution{
+$orbital\ period = T = \frac{2\pi}{\omega} = \frac{2\pi}{0.001008650132925822\ rad/s} = 6227.5\ s $ \\
+$T = \frac{6227.5\ s}{60\ s/min} = \ans{103.79\ min}$
+}
+
+\subproblem{c.}{The orbital velocity in meters per second.}
+
+\solution{
+$orbital\ velocity = v = \omega r = 0.001008650132925822\ rad/s * 6728.137\ km = 6.786\ km/s $ \\
+$v = 6.786\ km/s = 6786\ m/s$ \\
+\ans{orbital\ velocity = 6786 m/s}
+}
+
+\problem{2.5}{A LEO satellite has an apogee altitude of 5000 km and a perigee altitude of 800 km. What is the eccentricity of the orbit?}
+\solution{
+$ eccentricity = e = \frac{r_a - r_p}{r_a + r_p} $ \\
+$ r_a = R_{Earth} + altiude\ apogee = 6378.137\ km + 5000\ km = 11378.136\ km $ \\
+$ r_p = R_{Earth} + altiude\ perigee = 6378.137\ km + 800\ km = 7178.137\ km $ \\
+$ e = \frac{11378.136\ km - 7178.137\ km}{11378.136\ km + 7178.137\ km} = 0.22633 $ \\
+\ans{eccentricity = 0.22633}
+}
+
+\problem{2.11}{A GEO satellite is located at a longitude of 109\degree West. The satellite broadcasts television programming to the continental United States}
+\solution{
+  The following answers are all derived using the following equations and equation 2.41 from the textbook: \\
+  $central\ angle = \gamma = cos(lat_{earth})cos(lon_{satellite} - lon_{earth})$ \\
+  $elevation\ angle = tan^{-1}(\frac{6.61073 - cos(\gamma)}{sin(\gamma)}) - \gamma$, where $6.61073 = \frac{R_{GEO}}{R_{Earth}}$ \\
+  $intermediate\ angle = tan^{-1}(\frac{tan(|lon_{satellite} - lon_{earth}|)}{sin(lat_{earth})})$ \\
+  The azimuth angle was then calculated using the intermediate angle and the logic in equation 2.41. 
+  Depending on the relative positions of the satellite and earth station, the azimuth angle was calculated as either: \\
+  $azimuth = 180\degree - intermediate\ angle$, \\
+  $azimuth = 180\degree + intermediate\ angle$, \\
+  $azimuth = intermediate\ angle$, or \\
+  $azimuth = 360\degree - intermediate\ angle$.
+
+}
+\subproblem{a.}{Calculate the look angles for an earth station located near Blacksburg, Virginia, latitude 37.22\degree N, longitude 80.42\degree W.}
+\solution{
+\ans{elevation\ angle = 37.474\degree, azimuth\ angle = 137.993\degree}
+}
+\subproblem{b.}{Calculate the look angles for an earth station located near Billings, Montana, latitude 46.00\degree N, longitude 109.00\degree W.}
+\solution{
+\ans{elevation\ angle = 37.067\degree, azimuth\ angle = 180.00\degree}
+}
+\subproblem{c.}{Calculate the look angles for an earth station located near Los Angeles, California, latitude 34\degree N, longitude 118\degree W.}
+\solution{
+\ans{elevation\ angle = 49.307\degree, azimuth\ angle = 195.814\degree}
+}
+\problem{2.13}{A link is established through a GEO satellite at longitude 30 \degree W between 
+an earth station near Rio de Janeiro, Brazil, latitude 22.91 \degree S, longitude 43.17 \degree W, 
+and an earth station near Santiago Chile, latitude 33.45 \degree S longitude 70.67 \degree W. 
+Calculate the look angles for each earth station.}
+\solution{
+  Using the same equations from problem 2.11, the following answers were calculated for each earth station: \\
+  Rio de Janeiro, Brazil: \ans{elevation\ angle = 59.3264\degree, azimuth\ angle = 328.9903\degree} \\
+  Santiago, Chile: \ans{elevation\ angle = 31.8804\degree, azimuth\ angle = 302.6809\degree} \\
+}
+
+\problem{3.2}{A three-stabilized satellite has two solar arrays. Each array has an area of 5 m$^2$. At the beginning of life each of the solar sails generate 4kW of electrical power, 
+which falls to 3.6 kW at the end of the satellite's useful lifetime. 1kW of power is needed for housekeeping and 3kW is devoted to the telecommunication system}
+\subproblem{a.}{Calculate the efficiency of the solar cells at the beginning of life. Assume an incident solar power of 1.36 Kw/m$^2$, and noraml incidence of sunlight on the sails.}
+\solution{
+  $Total\ power\ generated\ by\ satellite\ at\ BOL = 2 \times 4\ kW = 8\ kW$ \\
+  $Efficiency = \frac{Total\ power}{Incident\ power \times Area} = \frac{8\ kW}{1.36\ kW/m^2 \times 10\ m^2} = \ans{0.588}$ \\
+}
+\subproblem{b.}{Calculate the efficiency of the solar cells at the end of life.}
+\solution{
+  $Total power generated by satellite at EOL = 2 \times 3.6\ kW = 7.2\ kW$ \\
+  $Efficiency = \frac{Total\ power}{Incident\ power \times Area} = \frac{7.2\ kW}{1.36\ kW/m^2 \times 10\ m^2} = \ans{0.529}$
+}
+\subproblem{c.}{If one of the solar sails fails and produces no power, how much power is avalailable to the telecommunication system.}
+\solution{At beginning of life, if one solar sail fails, the total power generated is 4kw. \\
+Power for housekeeping doesn't change, so the power available for the telecommunication system is $4\ kW - 1\ kW = \ans{3\ kW}$ \\
+Or \ans{2.6\ kW} at the end of life.}
+
+\problem{3.3}{A very low earth orbit satellite orbits the earth in 92 minutes and is in darkness for half of each orbit. 
+The satellite requires 2.5 kW of electrical power, which must be supplied by batteries when the satellite is in darkness. 
+While the satellite is in sunlight, its solar cells must supply sufficient power to run the satellite and charge the batteries.
+Charging the batteries requires 1.25 times the power that is needed to operate the satellite.}
+\subproblem{a.}{How much power must the solar cells supply while the satellite is in sunlight?}
+\solution{The solar cells must supply enough power to run the satellite and charge the batteries. \\
+$Total\ Power = satellite\ requirement + batteries = 2.5\ kW + 1.25 \times 2.5\ kW =\ans{5.625\ kW}$}
+\subproblem{b.}{The solar cells supply current at 50 V. How much current do they deliver?}
+\solution{$Current = I = \frac{p}{v} = \frac{5.625\ kW}{50\ V} = \ans{112.5\ A}$}
+\subproblem{c.}{The satellite is in darkness for 46 minutes of each orbit. 
+What capacity must the batteries have, in ampere hours?}
+\solution{$Ampere\ hours = I \times hours = 112.5\ A \times \frac{46\ min}{60\ min/h} = \ans{86.25\ ampere\ hours}$}
+\end{document}S
+
+\problem{3.4}{A DBS-TV receiving antenna has a circular aperture with a diameter of 0.6 m and operates at a center frequency of 12.2 GHz. 
+The antenna has an aperture efficiency of 70\%}
+\subproblem{a.}{Calculate the wavelength at 12.2 Ghz.}
+\solution{
+  $\wavelength = \lambda = \frac{c}{f} = \frac{299,792,458\ m/s}{12.2\ GHz} = \anw{0.02457\ m}$ \\
+}
+\subproblem{b.}{Calculate the gain of the antenna in decibels using the most accurate formula.}
+\solution{
+  $Area_{Antenna} = A = \pi*0.3^2 = 0.2827\ m^2$ \\
+  $Gain = G = \eta_{A}4\pi\frac{A}{\lambda^{2}} = 0.7 * 4\pi\frac{0.2827\ m^2}{(0.02457\ m)^{2}} = 4118.8743$ \\
+}
+\subproblem{c.}{Estimate the beamwidth of the antenna in degrees.}
+\solution{}
+\subproblem{d.}{Estimate the gain of the antenna in decibels using an approximation based on the beamwidth you found in part (c). 
+If this figure does not agree with your result in part (b) explain why.}
+\solution{}
+
+\end{document}S
