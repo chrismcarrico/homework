@@ -16,6 +16,8 @@
 
 \newcommand{\degree}{\ensuremath{^{\circ}}}
 
+\hyphenation{beam-width}
+
 % Shared indentation lengths for subproblems and solutions
 \newlength{\subproblemindent}
 \setlength{\subproblemindent}{1.5em}
@@ -142,7 +144,7 @@ Calculate the look angles for each earth station.}
 \solution{
   Using the same equations from problem 2.11, the following answers were calculated for each earth station: \\
   Rio de Janeiro, Brazil: \ans{elevation\ angle = 59.3264\degree, azimuth\ angle = 328.9903\degree} \\
-  Santiago, Chile: \ans{elevation\ angle = 31.8804\degree, azimuth\ angle = 302.6809\degree} \\
+  Santiago, Chile: \ans{elevation\ angle = 31.8804\degree, azimuth\ angle = 302.6809\degree}
 }
 
 \problem{3.2}{A three-stabilized satellite has two solar arrays. Each array has an area of 5 m$^2$. At the beginning of life each of the solar sails generate 4kW of electrical power, 
@@ -150,7 +152,7 @@ which falls to 3.6 kW at the end of the satellite's useful lifetime. 1kW of powe
 \subproblem{a.}{Calculate the efficiency of the solar cells at the beginning of life. Assume an incident solar power of 1.36 Kw/m$^2$, and noraml incidence of sunlight on the sails.}
 \solution{
   $Total\ power\ generated\ by\ satellite\ at\ BOL = 2 \times 4\ kW = 8\ kW$ \\
-  $Efficiency = \frac{Total\ power}{Incident\ power \times Area} = \frac{8\ kW}{1.36\ kW/m^2 \times 10\ m^2} = \ans{0.588}$ \\
+  $Efficiency = \frac{Total\ power}{Incident\ power \times Area} = \frac{8\ kW}{1.36\ kW/m^2 \times 10\ m^2} = \ans{0.588}$
 }
 \subproblem{b.}{Calculate the efficiency of the solar cells at the end of life.}
 \solution{
@@ -174,23 +176,27 @@ $Total\ Power = satellite\ requirement + batteries = 2.5\ kW + 1.25 \times 2.5\ 
 \subproblem{c.}{The satellite is in darkness for 46 minutes of each orbit. 
 What capacity must the batteries have, in ampere hours?}
 \solution{$Ampere\ hours = I \times hours = 112.5\ A \times \frac{46\ min}{60\ min/h} = \ans{86.25\ ampere\ hours}$}
-\end{document}S
 
 \problem{3.4}{A DBS-TV receiving antenna has a circular aperture with a diameter of 0.6 m and operates at a center frequency of 12.2 GHz. 
 The antenna has an aperture efficiency of 70\%}
 \subproblem{a.}{Calculate the wavelength at 12.2 Ghz.}
 \solution{
-  $\wavelength = \lambda = \frac{c}{f} = \frac{299,792,458\ m/s}{12.2\ GHz} = \anw{0.02457\ m}$ \\
+  $wavelength = \lambda = \frac{c}{f} = \frac{299,792,458\ m/s}{12.2\ GHz} = \ans{0.02457\ m}$
 }
 \subproblem{b.}{Calculate the gain of the antenna in decibels using the most accurate formula.}
 \solution{
   $Area_{Antenna} = A = \pi*0.3^2 = 0.2827\ m^2$ \\
   $Gain = G = \eta_{A}4\pi\frac{A}{\lambda^{2}} = 0.7 * 4\pi\frac{0.2827\ m^2}{(0.02457\ m)^{2}} = 4118.8743$ \\
+  $Gain\ dB = 10log_{10}(Gain) = 10log_{10}(4118.8743) = \ans{36.1477\ dB}$
 }
 \subproblem{c.}{Estimate the beamwidth of the antenna in degrees.}
-\solution{}
+\solution{Beamwidth = $\theta_{3dB} = 70\frac{\lambda}{D} = 70\frac{0.02457\ m}{0.6\ m} = \ans{2.867\degree}$}
 \subproblem{d.}{Estimate the gain of the antenna in decibels using an approximation based on the beamwidth you found in part (c). 
 If this figure does not agree with your result in part (b) explain why.}
-\solution{}
+\solution{
+  $Gain\ \approx \frac{33000}{\theta_{3dB}^2} = \frac{33000}{(2.867)^2} = 4015.1207$ \\
+  $Gain\ dB = 10log_{10}(Gain) = 10log_{10}(4015.1207) = \ans{36.0369\ dB}$ \\
+  This method of approximating gain based on beamwidth is less accurate than the method used in part (b) because it's based on a generic constant, 33000.
+}
 
-\end{document}S
+\end{document}
