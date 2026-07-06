@@ -1,4 +1,6 @@
 \documentclass[12pt]{article}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
 \usepackage{amsmath,amsthm,amssymb,amsfonts,setspace}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
@@ -81,88 +83,88 @@
 \subproblem{a.}{The orbital angular velocity in radians per second.}
 
 \solution{
-$angular\ velocity = \omega = \sqrt{\frac{GM}{r^3}} $ \\
-$orbital\ radius = r = R_{Earth} + h = 6378.137\ km + 350\ km = 6728.137\ km $ \\
+$\text{angular velocity} = \omega = \sqrt{\frac{GM}{r^3}} $ \\
+$\text{orbital radius} = r = R_{Earth} + h = 6378.137\ km + 350\ km = 6728.137\ km $ \\
 $\omega = \sqrt{\frac{3.986004418e5\ km^3/s^2}{(6728.137\ km)^3}} = 0.001008650132925822\ rad/s$ \\
-\ans{angular\ velocity = 0.001008650132925822\ rad/s}
+\ans{\text{angular velocity} = 0.001008650132925822\ rad/s}
 }
 
 \subproblem{b.}{The orbital period in minutes.}
 
 \solution{
-$orbital\ period = T = \frac{2\pi}{\omega} = \frac{2\pi}{0.001008650132925822\ rad/s} = 6227.5\ s $ \\
+$\text{orbital period} = T = \frac{2\pi}{\omega} = \frac{2\pi}{0.001008650132925822\ rad/s} = 6227.5\ s $ \\
 $T = \frac{6227.5\ s}{60\ s/min} = \ans{103.79\ min}$
 }
 
 \subproblem{c.}{The orbital velocity in meters per second.}
 
 \solution{
-$orbital\ velocity = v = \omega r = 0.001008650132925822\ rad/s * 6728.137\ km = 6.786\ km/s $ \\
+$\text{orbital velocity} = v = \omega r = 0.001008650132925822\ rad/s \times 6728.137\ km = 6.786\ km/s $ \\
 $v = 6.786\ km/s = 6786\ m/s$ \\
-\ans{orbital\ velocity = 6786\ m/s}
+\ans{\text{orbital velocity} = 6786\ m/s}
 }
 
 \problem{2.5}{A LEO satellite has an apogee altitude of 5000 km and a perigee altitude of 800 km. What is the eccentricity of the orbit?}
 \solution{
-$ eccentricity = e = \frac{r_a - r_p}{r_a + r_p} $ \\
-$ r_a = R_{Earth} + apogee\ altitude = 6378.137\ km + 5000\ km = 11378.136\ km $ \\
-$ r_p = R_{Earth} + perigee\ altitude = 6378.137\ km + 800\ km = 7178.137\ km $ \\
+$ \text{eccentricity} = e = \frac{r_a - r_p}{r_a + r_p} $ \\
+$ r_a = R_{Earth} + \text{apogee altitude} = 6378.137\ km + 5000\ km = 11378.136\ km $ \\
+$ r_p = R_{Earth} + \text{perigee altitude} = 6378.137\ km + 800\ km = 7178.137\ km $ \\
 $ e = \frac{11378.136\ km - 7178.137\ km}{11378.136\ km + 7178.137\ km} = 0.22633 $ \\
-\ans{eccentricity = 0.22633}
+\ans{\text{eccentricity} = 0.22633}
 }
 
-\problem{2.11}{A GEO satellite is located at a longitude of 109\degree West. The satellite broadcasts television programming to the continental United States}
+\problem{2.11}{A GEO satellite is located at a longitude of 109\degree W. The satellite broadcasts television programming to the continental United States.}
 \solution{
   The following answers are all derived using the following equations and equation 2.41 from the textbook: \\
-  $central\ angle = \gamma = \cos(lat_{earth})\cos(lon_{satellite} - lon_{earth})$ \\
-  $elevation\ angle = \tan^{-1}(\frac{6.61073 - \cos(\gamma)}{\sin(\gamma)}) - \gamma$, where $6.61073 = \frac{R_{GEO}}{R_{Earth}}$ \\
-  $intermediate\ angle = \tan^{-1}(\frac{\tan(|lon_{satellite} - lon_{earth}|)}{\sin(lat_{earth})})$ \\
-  The azimuth angle was then calculated using the intermediate angle and the logic in equation 2.41. 
+  $\text{central angle} = \gamma = \cos(lat_{earth})\cos(lon_{satellite} - lon_{earth})$ \\
+  $\text{elevation angle} = \tan^{-1}(\frac{6.61073 - \cos(\gamma)}{\sin(\gamma)}) - \gamma$, where $6.61073 = \frac{R_{GEO}}{R_{Earth}}$ \\
+  $\text{intermediate angle} = \tan^{-1}(\frac{\tan(|lon_{satellite} - lon_{earth}|)}{\sin(lat_{earth})})$ \\
+  The azimuth angle was then calculated using the intermediate angle and the logic in equation 2.41.
   Depending on the relative positions of the satellite and earth station, the azimuth angle was calculated as either: \\
-  $azimuth = 180\degree - intermediate\ angle$, \\
-  $azimuth = 180\degree + intermediate\ angle$, \\
-  $azimuth = intermediate\ angle$, or \\
-  $azimuth = 360\degree - intermediate\ angle$.
+  $\text{azimuth} = 180\degree - \text{intermediate angle}$, \\
+  $\text{azimuth} = 180\degree + \text{intermediate angle}$, \\
+  $\text{azimuth} = \text{intermediate angle}$, or \\
+  $\text{azimuth} = 360\degree - \text{intermediate angle}$.
 
 }
 \subproblem{a.}{Calculate the look angles for an earth station located near Blacksburg, Virginia, latitude 37.22\degree N, longitude 80.42\degree W.}
 \solution{
-\ans{elevation = 37.474\degree, azimuth = 137.993\degree}
+\ans{\text{elevation} = 37.474\degree, \text{azimuth} = 137.993\degree}
 }
 \subproblem{b.}{Calculate the look angles for an earth station located near Billings, Montana, latitude 46.00\degree N, longitude 109.00\degree W.}
 \solution{
-\ans{elevation = 37.067\degree, azimuth = 180.00\degree}
+\ans{\text{elevation} = 37.067\degree, \text{azimuth} = 180.00\degree}
 }
 \subproblem{c.}{Calculate the look angles for an earth station located near Los Angeles, California, latitude 34\degree N, longitude 118\degree W.}
 \solution{
-\ans{elevation = 49.307\degree, azimuth = 195.814\degree}
+\ans{\text{elevation} = 49.307\degree, \text{azimuth} = 195.814\degree}
 }
-\problem{2.13}{A link is established through a GEO satellite at longitude 30 \degree W between 
-an earth station near Rio de Janeiro, Brazil, latitude 22.91 \degree S, longitude 43.17 \degree W, 
-and an earth station near Santiago Chile, latitude 33.45 \degree S longitude 70.67 \degree W. 
+\problem{2.13}{A link is established through a GEO satellite at longitude 30\degree W between
+an earth station near Rio de Janeiro, Brazil, latitude 22.91\degree S, longitude 43.17\degree W,
+and an earth station near Santiago, Chile, latitude 33.45\degree S, longitude 70.67\degree W.
 Calculate the look angles for each earth station.}
 \solution{
   Using the same equations from problem 2.11, the following answers were calculated for each earth station: \\
-  Rio de Janeiro, Brazil: \ans{elevation = 59.3264\degree, azimuth = 328.9903\degree} \\
-  Santiago, Chile: \ans{elevation = 31.8804\degree, azimuth = 302.6809\degree}
+  Rio de Janeiro, Brazil: \ans{\text{elevation} = 59.3264\degree, \text{azimuth} = 328.9903\degree} \\
+  Santiago, Chile: \ans{\text{elevation} = 31.8804\degree, \text{azimuth} = 302.6809\degree}
 }
 
-\problem{3.2}{A three-stabilized satellite has two solar arrays. Each array has an area of 5 m$^2$. At the beginning of life each of the solar sails generate 4kW of electrical power, 
-which falls to 3.6 kW at the end of the satellite's useful lifetime. 1kW of power is needed for housekeeping and 3kW is devoted to the telecommunication system}
-\subproblem{a.}{Calculate the efficiency of the solar cells at the beginning of life. Assume an incident solar power of 1.36 Kw/m$^2$, and noraml incidence of sunlight on the sails.}
+\problem{3.2}{A three-axis stabilized satellite has two solar arrays. Each array has an area of 5 m$^2$. At the beginning of life each of the solar arrays generates 4 kW of electrical power,
+which falls to 3.6 kW at the end of the satellite's useful lifetime. 1 kW of power is needed for housekeeping and 3 kW is devoted to the telecommunication system.}
+\subproblem{a.}{Calculate the efficiency of the solar cells at the beginning of life. Assume an incident solar power of 1.36 kW/m$^2$, and normal incidence of sunlight on the arrays.}
 \solution{
-  $Total\ power\ generated\ by\ satellite\ at\ BOL = 2 \times 4\ kW = 8\ kW$ \\
-  $Efficiency = \frac{Total\ power}{Incident\ power \times Area} = \frac{8\ kW}{1.36\ kW/m^2 \times 10\ m^2} = \ans{0.588}$
+  $\text{Total power generated by satellite at BOL} = 2 \times 4\ kW = 8\ kW$ \\
+  $\text{Efficiency} = \frac{\text{Total power}}{\text{Incident power} \times \text{Area}} = \frac{8\ kW}{1.36\ kW/m^2 \times 10\ m^2} = \ans{0.588}$
 }
 \subproblem{b.}{Calculate the efficiency of the solar cells at the end of life.}
 \solution{
-  $Total\ power\ generated\ by\ satellite\ at\ EOL = 2 \times 3.6\ kW = 7.2\ kW$ \\
-  $Efficiency = \frac{Total\ power}{Incident\ power \times Area} = \frac{7.2\ kW}{1.36\ kW/m^2 \times 10\ m^2} = \ans{0.529}$
+  $\text{Total power generated by satellite at EOL} = 2 \times 3.6\ kW = 7.2\ kW$ \\
+  $\text{Efficiency} = \frac{\text{Total power}}{\text{Incident power} \times \text{Area}} = \frac{7.2\ kW}{1.36\ kW/m^2 \times 10\ m^2} = \ans{0.529}$
 }
-\subproblem{c.}{If one of the solar sails fails and produces no power, how much power is avalailable to the telecommunication system.}
-\solution{At beginning of life, if one solar sail fails, the total power generated is 4 kW. \\
-Power for housekeeping doesn't change, so the power available for the telecommunication system is $4\ kW - 1\ kW = \ans{3\ kW}$ \\
-Or \ans{2.6\ kW} at the end of life.}
+\subproblem{c.}{If one of the solar arrays fails and produces no power, how much power is available to the telecommunication system.}
+\solution{At the beginning of life, if one solar array fails, the total power generated is 4 kW. \\
+Power for housekeeping does not change, so the power available for the telecommunication system is $4\ kW - 1\ kW = \ans{3\ kW}$ \\
+or \ans{2.6\ kW} at the end of life.}
 
 \problem{3.3}{A very low earth orbit satellite orbits the earth in 92 minutes and is in darkness for half of each orbit. 
 The satellite requires 2.5 kW of electrical power, which must be supplied by batteries when the satellite is in darkness. 
@@ -170,33 +172,33 @@ While the satellite is in sunlight, its solar cells must supply sufficient power
 Charging the batteries requires 1.25 times the power that is needed to operate the satellite.}
 \subproblem{a.}{How much power must the solar cells supply while the satellite is in sunlight?}
 \solution{The solar cells must supply enough power to run the satellite and charge the batteries. \\
-$Total\ Power = satellite\ requirement + batteries = 2.5\ kW + 1.25 \times 2.5\ kW = \ans{5.625\ kW}$}
+$\text{Total Power} = \text{satellite requirement} + \text{batteries} = 2.5\ kW + 1.25 \times 2.5\ kW = \ans{5.625\ kW}$}
 \subproblem{b.}{The solar cells supply current at 50 V. How much current do they deliver?}
-\solution{$Current = I = \frac{P}{V} = \frac{5.625\ kW}{50\ V} = \ans{112.5\ A}$}
+\solution{$\text{Current} = I = \frac{P}{V} = \frac{5.625\ kW}{50\ V} = \ans{112.5\ A}$}
 \subproblem{c.}{The satellite is in darkness for 46 minutes of each orbit. 
 What capacity must the batteries have, in ampere hours?}
-\solution{$Ampere\ hours = I \times hours = 112.5\ A \times \frac{46\ min}{60\ min/h} = \ans{86.25\ ampere\ hours}$}
+\solution{$\text{Ampere hours} = I \times \text{hours} = 112.5\ A \times \frac{46\ min}{60\ min/h} = \ans{86.25\ \text{ampere hours}}$}
 
-\problem{3.4}{A DBS-TV receiving antenna has a circular aperture with a diameter of 0.6 m and operates at a center frequency of 12.2 GHz. 
-The antenna has an aperture efficiency of 70\%}
+\problem{3.4}{A DBS-TV receiving antenna has a circular aperture with a diameter of 0.6 m and operates at a center frequency of 12.2 GHz.
+The antenna has an aperture efficiency of 70\%.}
 \subproblem{a.}{Calculate the wavelength at 12.2 GHz.}
 \solution{
-  $wavelength = \lambda = \frac{c}{f} = \frac{299,792,458\ m/s}{12.2\ GHz} = \ans{0.02457\ m}$
+  $\text{wavelength} = \lambda = \frac{c}{f} = \frac{299,792,458\ m/s}{12.2\ GHz} = \ans{0.02457\ m}$
 }
 \subproblem{b.}{Calculate the gain of the antenna in decibels using the most accurate formula.}
 \solution{
-  $Area_{Antenna} = A = \pi*0.3^2 = 0.2827\ m^2$ \\
-  $Gain = G = \eta_{A}4\pi\frac{A}{\lambda^{2}} = 0.7 * 4\pi\frac{0.2827\ m^2}{(0.02457\ m)^{2}} = 4118.8743$ \\
-  $Gain\ dB = 10log_{10}(Gain) = 10log_{10}(4118.8743) = \ans{36.1477\ dB}$
+  $Area_{Antenna} = A = \pi \times 0.3^2 = 0.2827\ m^2$ \\
+  $\text{Gain} = G = \eta_{A}4\pi\frac{A}{\lambda^{2}} = 0.7 \times 4\pi\frac{0.2827\ m^2}{(0.02457\ m)^{2}} = 4118.8743$ \\
+  $\text{Gain dB} = 10\log_{10}(\text{Gain}) = 10\log_{10}(4118.8743) = \ans{36.1477\ dB}$
 }
 \subproblem{c.}{Estimate the beamwidth of the antenna in degrees.}
 \solution{Beamwidth = $\theta_{3dB} = 70\frac{\lambda}{D} = 70\frac{0.02457\ m}{0.6\ m} = \ans{2.867\degree}$}
-\subproblem{d.}{Estimate the gain of the antenna in decibels using an approximation based on the beamwidth you found in part (c). 
-If this figure does not agree with your result in part (b) explain why.}
+\subproblem{d.}{Estimate the gain of the antenna in decibels using an approximation based on the beamwidth you found in part (c).
+If this figure does not agree with your result in part (b), explain why.}
 \solution{
-  $Gain\ \approx \frac{33000}{\theta_{3dB}^2} = \frac{33000}{(2.867)^2} = 4015.1207$ \\
-  $Gain\ dB = 10log_{10}(Gain) = 10log_{10}(4015.1207) = \ans{36.0369\ dB}$ \\
-  This method of approximating gain based on beamwidth is less accurate than the method used in part (b) because it's based on a generic constant, 33000.
+  $\text{Gain} \approx \frac{33000}{\theta_{3dB}^2} = \frac{33000}{(2.867)^2} = 4015.1207$ \\
+  $\text{Gain dB} = 10\log_{10}(\text{Gain}) = 10\log_{10}(4015.1207) = \ans{36.0369\ dB}$ \\
+  This method of approximating gain based on beamwidth is less accurate than the method used in part (b) because it is based on a generic constant, 33000.
 }
 
 \end{document}
