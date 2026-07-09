@@ -1,4 +1,5 @@
 *.log
+*.out
 *.aux
 *.pdf
-*.out
+.venv/

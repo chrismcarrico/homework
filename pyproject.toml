@@ -1,0 +1,16 @@
+[project]
+name = "homework"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "jupyterlab",
+    "notebook",
+    "ipython",
+    "uwu",
+    "uv"
+]
+
+[tool.uv.sources]
+uwu = { git = "https://github.com/chrismcarrico/uwu"}
