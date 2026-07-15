@@ -67,7 +67,7 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyfoot[C]{\footnotesize\textit{Source: \url{https://github.com/chrismcarrico/homework}}}
+\fancyfoot[C]{\footnotesize\textit{Source: \url{https://github.com/chrismcarrico/homework/blob/master/spce5085/a2/carrico_spce5085_a2.ipynb}}}
 
 %%%% In most cases you won't need to edit anything above this line %%%%
 
@@ -79,31 +79,44 @@
 \hfill Assignment \#2
 
 %%%% EXAMPLE %%%%
-\problem{4.1}{}
+\problem{4.1}{Calculate the path loss for a satellite to earth down link with a distance of 38,500 km at a frequency of 4 GHz. Whaat is the uplink path loss if the earth station transmits to the same satellite at a frequency of 6.0 GHz?}
 \solution{
-
+$L_p\ \text{[dB]} = 20\log_{10}\left(\dfrac{4\pi R}{\lambda}\right)$, where $\lambda = c/f$ \\
+$L_p(4\ GHz) = 20\log_{10}\left(\dfrac{4\pi \times 38{,}500{,}000\ m}{299{,}792{,}458/4\times10^9\ m}\right) = \ans{196.20\ dB}$ \\
+$L_p(6\ GHz) = 20\log_{10}\left(\dfrac{4\pi \times 38{,}500{,}000\ m}{299{,}792{,}458/6\times10^9\ m}\right) = \ans{199.72\ dB}$
 }
-\problem{4.2}{}
+\problem{4.2}{A LEO satellite at an altitude of 400 km has a distance to a receiving terminal of 500 km. The satellite radiates a power of 1.0 W from a spot beam antenna with a gain of 35 dB in the direction of the terminal. Find the flux density at the receiving terminal, and the power received with a tracking antenna with a gain of 30 dB. (Assuming an operating frequency of 4 GHz.)}
 \solution{
-
+$F = \dfrac{P_t G_t}{4\pi R^2}$, where $G_t = 10^{35/10}$ (linear) and $R = 500{,}000\ m$ \\
+$F = \dfrac{1\ W \times 10^{35/10}}{4\pi (500{,}000\ m)^2} = 1.007\times10^{-9}\ W/m^2 = \ans{-89.97\ dBW/m^2}$ \\
+$\text{EIRP}\ \text{[dBW]} = 10\log_{10}(P_t) + G_t\text{[dB]} = 0\ dBW + 35\ dB = 35\ dBW$ \\
+$P_r\ \text{[dBW]} = \text{EIRP} + G_r - L_p = 35\ dBW + 30\ dB - 158.47\ dB = \ans{-93.47\ dBW = 4.50\times10^{-10}\ W}$
 }
-\problem{4.4}{}
-\subproblem{a}{}
+\problem{4.4}{A Ku-band DBS-TV receiving terminal has an antenna with a gain of 34 dB at 12.5 GHz. The noise temperature of the receiver under clear air conditions is 80 K.}
+\subproblem{a}{Calculate the G/T ratio of the terminal in dB.}
 \solution{
-
+$G/T\ \text{[dB/K]} = G\text{[dB]} - 10\log_{10}(T)$ \\
+$G/T = 34\ dB - 10\log_{10}(80\ K) = 34 - 19.03 = \ans{14.97\ dB/K}$
 }
-\problem{4.8}{}
-\subproblem{a}{}
+\problem{4.8}{A Ku-band satellite carries a bent pipe transponder with 36 MHz bandwidth, which is operated in its linear region. In the clear air conditions, the uplink CNR is 24.0 dB and the downlink CNR at a receiving earth station is 14.0 dB.}
+\subproblem{a}{Calculate the overall $\text{(CNR)}_o$ in clear sky conditions.}
 \solution{
-
+$\text{CNR}_o\ \text{[dB]} = -10\log_{10}\left(10^{-\text{CNR}_u\text{[dB]}/10} + 10^{-\text{CNR}_d\text{[dB]}/10}\right)$ \\
+$\text{CNR}_o = -10\log_{10}\left(10^{-24.0/10} + 10^{-14.0/10}\right) = \ans{13.59\ dB}$
 }
-\subproblem{b}{}
+\subproblem{b}{Rain affects the uplink causing 4 dB of attenuation. Calculate the overall $\text{(CNR)}_o$ at the receiving earth station.}
 \solution{
-
+$\text{CNR}_u\text{[dB]} = 24.0\ dB - 4\ dB = 20.0\ dB$; $\text{CNR}_d$ is unchanged at $14.0\ dB$. \\
+$\text{CNR}_o = -10\log_{10}\left(10^{-20.0/10} + 10^{-14.0/10}\right) = \ans{13.03\ dB}$
 }
-\problem{4.11}{}
-\subproblem{i}{}
+\problem{4.11}{Calculate the power received by the earth station when the satellite in Example 4.1 has a regional beam with a gain of 26 dB.}
 \solution{
-  
+\textit{Not solved} --- this part depends on Example 4.1's transmit power/EIRP, distance, and global beam gain, which were not available.
+}
+\subproblem{i}{What is the diameter of a circular aperture antenna with a gain of 26 dB at 11 GHz?}
+\solution{
+$G = \eta_A\left(\dfrac{\pi D}{\lambda}\right)^2 \Rightarrow D = \dfrac{\lambda}{\pi}\sqrt{\dfrac{G}{\eta_A}}$ \\
+$\lambda = c/f = 0.02725\ m$ \\
+$D = \dfrac{0.02725\ m}{\pi}\sqrt{\dfrac{398.11}{0.55}} = \ans{0.233\ m}$
 }
 \end{document}
