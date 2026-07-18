@@ -9,7 +9,8 @@ dependencies = [
     "notebook",
     "ipython",
     "uwu",
-    "uv"
+    "uv",
+    "matplotlib>=3.11.0",
 ]
 
 [tool.uv.sources]

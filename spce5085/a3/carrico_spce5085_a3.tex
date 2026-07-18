@@ -2,6 +2,8 @@
 \usepackage{amsmath,amsthm,amssymb,amsfonts,setspace}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
+\usepackage{graphicx} 
+
 
 \textwidth 7.0 truein
 \oddsidemargin -0.25in
@@ -78,28 +80,51 @@
 
 \hfill Assignment \#3
 
-\problem{1}{Calculate the system noise temperature of a 2 GHz receiver, given the following:  Tin=20 K, Trf=45, Tm = 450 K, Tif =800 K,  Gm=1 dB,  Grf = 20 dB, G if = 30 dB. 
-See text section 4.3.2  (15 pts)   ; Where Tin = Temperature In, Trf = Temperature of RF elements, Tm = Temperature of mixer, Temperature of Intermediate frequency, and Gm = gain of mixer, Gif = gain of IF.    
+\problem{1}{Calculate the system noise temperature of a 2 GHz receiver, given the following: $T_{in} = 20 K, T_{RF} = 45, T_{m} = 450 K, T_{IF} = 800 K, G_{m} = 1 dB, G_{RF} = 20 dB, G_{IF} = 30 dB$.
+See text section 4.3.2 (15 pts); Where $T_{in}$ = Temperature In, $T_{RF}$ = Temperature of RF elements, $T_{m}$ = Temperature of mixer, $T_{IF}$ = Temperature of Intermediate Frequency, and $G_{m}$ = gain of mixer, $G_{IF}$ = gain of IF.
 Reminder: Use consistent units: don't mix dB and linear, convert dB units to linear before using equation 4.20.}
-\solution{}
-\problem{2}{Construct a graph showing the Doppler frequency (KHz) for a satellite in LEO (1000 km altitude) transmitting in L band microwave (1.5 GHz) from a ground station at observation angle of 10-170 degrees.  
-A spreadsheet at 5 degree increments works well.  (15 pts)  Suggest that you read  article posted in module 2 on Doppler in LEO.}
-\solution{}
+\solution{
+Convert from dB to linear:
+$$G_{m} = 10^{1/10} = 1.259$$
+$$G_{RF} = 10^{20/10} = 100$$
+$$G_{IF} = 10^{30/10} = 1000$$
+
+System noise temperature:
+$$T_{S} = T_{RF} + T_{in} + \frac{T_{m}}{G_{RF}} + \frac{T_{IF}}{G_{m}G_{RF}}$$
+$$T_{S} = 45 + 20 + \frac{450}{100} + \frac{800}{(1.259)(100)}$$
+$$\ans{T_{S} \approx 75.85 \text{ K}}$$
+}
+\problem{2}{Construct a graph showing the Doppler frequency (KHz) for a satellite in LEO (1000 km altitude) transmitting in L band microwave (1.5 GHz) from a ground station at observation angle of 10-170 degrees.
+A spreadsheet at 5 degree increments works well. (15 pts) Suggest that you read article posted in module 2 on Doppler in LEO.}
+\solution{
+  \centering
+  \includegraphics[width=0.7\textwidth]{elevation_angle_vs_doppler_shift.png}
+}
 \problem{3}{Construct a complete spread sheet downlink budget, for the Ku-band DBS-TV (Table 4.6a as is in textbook) 
-Inserting all appropriate equations in the spread sheet to reproduce the values. (note typo in table, the path distance units should be 38,000 km (not meters).)   (40 pts)}
+Inserting all appropriate equations in the spread sheet to reproduce the values. (note typo in table, the path distance units should be 38,000 km (not meters).) (40 pts)}
 \solution{}
 \subproblem{a}{Is the selection of QPSK at 1/2 rate an appropriate choice? explain}
 \solution{}
-\subproblem{b}{What would be the CNR and link margin be, if the Transponder was 170 W (vs. 160 W as in table) }
+\subproblem{b}{What would be the CNR and link margin be, if the Transponder was 170 W (vs. 160 W as in table)}
 \solution{}
 \problem{4}{Using 14 GHz: A Ku-band satellite uplink has a carrier frequency of 14.0 GHz and a carries a symbol stream at $R_{s} = 20 Msps$. The transmitter and receiver have SRRC filters with $\alpha = .20$}
 \subproblem{a}{What is bandwidth occupied by the RF signal?}
-\solution{}
+\solution{
+With matched SRRC filters at transmit and receive, the end-to-end response is a raised-cosine filter, so the occupied RF bandwidth is
+$$B = R_{s}(1+\alpha)$$
+$$B = 20\text{ Msps} \times (1 + 0.20)$$
+$$\ans{B = 24 \text{ MHz}}$$
+}
 \subproblem{b}{What is the frequency range of the transmitted RF signal?}
-\solution{}
+\solution{
+The signal spans $\pm B/2$ about the carrier:
+$$f_{c} - \frac{B}{2} \leq f_{RF} \leq f_{c} + \frac{B}{2}$$
+$$14.000\text{ GHz} - 12\text{ MHz} \leq f_{RF} \leq 14.000\text{ GHz} + 12\text{ MHz}$$
+$$\ans{13.988 \text{ GHz} \leq f_{RF} \leq 14.012 \text{ GHz}}$$
+}
 \problem{5}{Using Figure 5.13 on p.229 of my textbook, estimate graphically:}
 \subproblem{a}{the minimum CNR (dB) modulated in BPSK to achieve BER of 10-6 or better.}
-\solution{}
-\subproblem{what is the expected BER for a QPSK modulated signal when CNR is about 15 dB}
-\solution{}
+\solution{\ans{CNR \approx 11 \text{ dB}}}
+\subproblem{b}{What is the expected BER for a QPSK modulated signal when CNR is about 15 dB}
+\solution{ \ans{BER \approx 10^{-8}}}
 \end{document}
