@@ -2,4 +2,6 @@
 *.out
 *.aux
 *.pdf
+*.png
+*.xlsx
 .venv/
