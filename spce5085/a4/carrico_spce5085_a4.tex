@@ -2,6 +2,7 @@
 \usepackage{amsmath,amsthm,amssymb,amsfonts,setspace}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
+\usepackage{graphicx}
 
 \textwidth 7.0 truein
 \oddsidemargin -0.25in
@@ -79,13 +80,22 @@
 \hfill Assignment \#4
 
 \problem{7.2}{Why is attenuation on a slant path in clear sky conditions greater at 22 GHz than at 30 GHz? Why is the occurrence of attenuation in rain on a slant path at the 1 - 2 dB level often greater at 22 GHz than at 30 GHz?}
-\solution{}
-
+\solution{There is a peak of attenuation at 22 GHz because of a property of water molecules. This effect is strongest at 22 GHz and weaker at 30 GHz. This effect is still dominant when attenuation is at the 1 -2 dB level, because the attenuation contributed by the molecules is greater than the attenuation contributed by rain.}
 \problem{7.4}{An earth station at sea level communicates at an elevation angle of 30\circ with a GEO satellite in Ka-band at a downlink frequency of 20 GHz. Stratiform rain is present in the slant path with a melting level height of 2.5 km. Find}
 \subproblem{a}{The path length through the rain.}
-\solution{}
+\solution{Since the earth station is at sea level, the rain height above the station equals the melting layer height, $h = 2.5$ km. The slant path length through the rain is
+\[
+L = \frac{h}{\sin(\theta)} = \frac{2.5 \text{ km}}{\sin(30\circ)} = \frac{2.5 \text{ km}}{0.5} = \ans{5.00 \text{ km}}
+\]}
 \subproblem{b}{The path attenuation for a specific attenuation of 1.5 dB/km.}
-\solution{}
+\solution{The path attenuation is the product of the specific attenuation and the path length through the rain found in part (a):
+\[
+A = \gamma L = (1.5 \text{ dB/km})(5.00 \text{ km}) = \ans{7.50 \text{ dB}}
+\]}
 \problem{3}{Create a plot similar to figure 3.1 Doppler vs SV altitude in the article "The Mathematical Model of Doppler Frequency Shift in Leo At Ku, K and Ka Frequency Bands" (posted in the module 2), for satellite signal transmission from spacecraft to stationary ground station - L band (1.25 GHz), X band (11.0 GHz), and Ku band (16.5 GHz) for SV altitudes of (at a minimum) 1000, 10,000 and 20,000 km. (40 pts)}
-\solution{}
+\solution{
+\begin{center}
+\includegraphics[width=0.8\textwidth]{doppler_shift_vs_altitude.png}
+\end{center}
+}
 \end{document}
