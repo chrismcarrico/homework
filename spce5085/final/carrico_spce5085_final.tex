@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,setspace}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\textwidth 7.0 truein
+\oddsidemargin -0.25in
+\evensidemargin -0.5 truein
+\topmargin -0.85in
+\textheight 9.5in
+
+%%%% Custom commands %%%%
+
+% Box/square the final answer
+\newcommand{\ans}[1]{\boxed{#1}}
+
+% Shared indentation lengths for subproblems and solutions
+\newlength{\subproblemindent}
+\setlength{\subproblemindent}{1.5em}
+\newlength{\subproblemlabelwidth}
+\setlength{\subproblemlabelwidth}{2em}
+\newlength{\solutionindent}
+\setlength{\solutionindent}{3em}
+
+% Make \circ usable in ordinary text as well as math mode
+\let\latexcirc\circ
+\renewcommand{\circ}{\ifmmode\latexcirc\else\ensuremath{\latexcirc}\fi}
+
+% Bold a top-level problem: number and text separated by an em-dash
+\newcommand{\problem}[2]{\vspace{1em}\noindent\textbf{#1} --- #2\par\vspace{0.25em}}
+
+% Bold and indent a subproblem: letter and text separated by an em-dash
+\newcommand{\subproblem}[2]{%
+  \par\vspace{0.5em}%
+  \noindent
+  \hangindent=\dimexpr\subproblemindent+\subproblemlabelwidth+0.5em\relax
+  \hangafter=1
+  \hspace*{\subproblemindent}%
+  \makebox[\subproblemlabelwidth][l]{\textbf{#1}}#2\par
+}
+
+% Indent all lines of the answer/solution block
+\newcommand{\solution}[1]{%
+  \par\vspace{0.0em}%
+  \begin{list}{}{
+    \setlength{\leftmargin}{\solutionindent}
+    \setlength{\rightmargin}{0pt}
+    \setlength{\listparindent}{0pt}
+    \setlength{\itemindent}{0pt}
+    \setlength{\parsep}{0pt}
+  }%
+    \item\relax
+    \begingroup
+      \setlength{\baselineskip}{1.5\baselineskip}
+      \setlength{\lineskip}{1.5\lineskip}
+      \setlength{\parskip}{0pt}
+      \everymath{\displaystyle}
+      #1
+      \par
+    \endgroup
+  \end{list}%
+  \vspace{0.25em}%
+}
+
+% Running footer with a link back to the source repo, shown on every page
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[C]{\footnotesize\textit{Source: \url{https://github.com/chrismcarrico/homework/blob/master/spce5085/a3/carrico_spce5085_final.ipynb}}}
+
+%%%% In most cases you won't need to edit anything above this line %%%%
+
+\begin{document}
+\hfill Christian Carrico
+
+\hfill SPCE 5085
+
+\hfill Summer 2026 Final Exam
+
+\problem{1.0}{A proposed LEO (600 km altitude) at Ka band (30 GHz) is modulated with uncoded QPSK (see Fig 4.11), with a 20 MHz bandwidth. Tx Power = 10 dBW, Tx Gain = 4 dBi, Rcv Gain = 6 dBi. Calculate [show all work]:}
+\subproblem{i.}{Given an orbit altitude of 600 km, what is the Free Space Path Loss (dB units) at nadir (overhead)?}
+\subproblem{ii.}{a) What is slant range (km) from ground station (sea level) to this satellite at 10 deg elevation, above horizon? See table below to estimate. b) Calculate FSPL at that slant distance.}
+\subproblem{iii.}{Assume atmospheric attenuation of 0.25 dB/km at this frequency, what rough atmospheric loss at a) nadir and b) 10 deg elevation above horizon? (Assume 20 km thick troposphere)}
+\subproblem{iv.}{Estimate the received power at receiver at nadir and 10 deg elevation.}
+\subproblem{v.}{What Doppler shift is expected at receiver for a) nadir and b) 10 deg elevation?}
+
+\problem{2.0}{Generate CNR vs BER performance curves for QPSK \& BPSK digital modulation, calculate (using erfc(x)) or use tables in appendix C, ranging from 5 dB to 15 dB CNR to estimate Bit Error Rates.}
+
+\problem{3.0}{Frequency translation: make downconverter/upconverter calculations. A downlink of carrier frequency of 4.864 GHz needs to translate by receiver to intermediate frequency (IF) of 70.000 MHz (followed by band-pass filter). Find:}
+\subproblem{a.}{The mixer (local oscillator) frequency needed to translate the signal (4.864 GHz -> 70.000 MHz).}
+\subproblem{b.}{Equivalent Noise System Temperature of the Circuit above (device Gain cited in dB and linear values, i.e. 30 dB [1000]).}
+
+\problem{4.0}{A parabolic dish antenna has a 65\% aperture efficiency, 1.2 meter diameter intended for 4.2 GHz signals, and the system noise temperature is 75 K (need to convert to dB-K). Find:}
+\subproblem{a.}{Antenna Gain (dB)}
+\subproblem{b.}{Beamwidth (deg)}
+\subproblem{c.}{G/T (dB-K)}
+
+\problem{5.0}{Solar radiation creates a power density of 1.39 kW/$m^2$ which is available for power conversion for satellites for operating.}
+\subproblem{a.}{Assuming a 25\% conversion efficiency and 10 $m^2$ of active area for solar panels, what power is available for total operations?}
+\subproblem{b.}{If 2 kW are needed for satellite overhead (control circuits, maintenance functions), what power (Pt) is still available for transponders?}
+
+\end{document}
