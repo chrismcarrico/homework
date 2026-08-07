@@ -2,6 +2,7 @@
 \usepackage{amsmath,amsthm,amssymb,amsfonts,setspace}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
+\usepackage{graphicx}
 
 \textwidth 7.0 truein
 \oddsidemargin -0.25in
@@ -23,8 +24,7 @@
 \setlength{\solutionindent}{3em}
 
 % Make \circ usable in ordinary text as well as math mode
-\let\latexcirc\circ
-\renewcommand{\circ}{\ifmmode\latexcirc\else\ensuremath{\latexcirc}\fi}
+\newcommand{\degree}{\ensuremath{^{\circ}}}
 
 % Bold a top-level problem: number and text separated by an em-dash
 \newcommand{\problem}[2]{\vspace{1em}\noindent\textbf{#1} --- #2\par\vspace{0.25em}}
@@ -39,7 +39,7 @@
   \makebox[\subproblemlabelwidth][l]{\textbf{#1}}#2\par
 }
 
-% Indent all lines of the answer/solution block
+% Indent all lines of the answer/solution block (left-aligned)
 \newcommand{\solution}[1]{%
   \par\vspace{0.0em}%
   \begin{list}{}{
@@ -62,12 +62,37 @@
   \vspace{0.25em}%
 }
 
+% Same as \solution, but centered -- for equation derivations and figures.
+% Note: redefines amsthm's \proof, which is unused here as an environment.
+\renewcommand{\proof}[1]{%
+  \par\vspace{0.0em}%
+  \begin{list}{}{
+    \setlength{\leftmargin}{\solutionindent}
+    \setlength{\rightmargin}{0pt}
+    \setlength{\listparindent}{0pt}
+    \setlength{\itemindent}{0pt}
+    \setlength{\parsep}{0pt}
+  }%
+    \item\relax
+    \begingroup
+      \setlength{\baselineskip}{1.5\baselineskip}
+      \setlength{\lineskip}{1.5\lineskip}
+      \setlength{\parskip}{0pt}
+      \everymath{\displaystyle}
+      \centering
+      #1
+      \par
+    \endgroup
+  \end{list}%
+  \vspace{0.25em}%
+}
+
 % Running footer with a link back to the source repo, shown on every page
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyfoot[C]{\footnotesize\textit{Source: \url{https://github.com/chrismcarrico/homework/blob/master/spce5085/a3/carrico_spce5085_final.ipynb}}}
+\fancyfoot[C]{\footnotesize\textit{Source: \url{https://github.com/chrismcarrico/homework/blob/master/spce5085/final/carrico_spce5085_final.ipynb}}}
 
 %%%% In most cases you won't need to edit anything above this line %%%%
 
@@ -80,24 +105,115 @@
 
 \problem{1.0}{A proposed LEO (600 km altitude) at Ka band (30 GHz) is modulated with uncoded QPSK (see Fig 4.11), with a 20 MHz bandwidth. Tx Power = 10 dBW, Tx Gain = 4 dBi, Rcv Gain = 6 dBi. Calculate [show all work]:}
 \subproblem{i.}{Given an orbit altitude of 600 km, what is the Free Space Path Loss (dB units) at nadir (overhead)?}
+\proof{
+$$L_{FSPL} = 20\log_{10}\left(\frac{4\pi d f}{c}\right)$$
+$$= 20\log_{10}\left(\frac{4\pi (600\times10^3\text{ m})(30\times10^9\text{ Hz})}{3\times10^8\text{ m/s}}\right)$$
+$$\ans{L_{FSPL} = 177.55 \text{ dB}}$$
+}
 \subproblem{ii.}{a) What is slant range (km) from ground station (sea level) to this satellite at 10 deg elevation, above horizon? See table below to estimate. b) Calculate FSPL at that slant distance.}
+\solution{
+a) From Table 1, at $H=600$ km and $Max\ Elevation=10\degree$:
+$$\ans{d_{slant} \approx 1942 \text{ km}}$$
+
+b) Free Space Path Loss at $Elevation=10\degree$:
+$$L_{FSPL} = 20\log_{10}\left(\frac{4\pi (1942\times10^3\text{ m})(30\times10^9\text{ Hz})}{3\times10^8\text{ m/s}}\right)$$
+$$\ans{L_{FSPL} = 187.75 \text{ dB}}$$
+}
 \subproblem{iii.}{Assume atmospheric attenuation of 0.25 dB/km at this frequency, what rough atmospheric loss at a) nadir and b) 10 deg elevation above horizon? (Assume 20 km thick troposphere)}
+\solution{
+
+Nadir:
+$$\text{Distance through troposphere: } d = 20 \text{ km}$$
+$$L_{atm} = \frac{\text{Attenuation}}{\text{distance}} \times \text{distance}$$
+$$L_{atm} = 0.25\text{ dB/km} \times 20\text{ km} = 5 \text{ dB}$$
+$$\ans{L_{atm} = 5 \text{ dB}}$$
+
+$Elevation=10\degree$:
+$$\text{Distance through troposphere: } d = 20\text{ km}/\sin(10\degree) = 115.18 \text{ km}$$
+$$L_{atm,\,10\degree} = 0.25\text{ dB/km} \times 115.18\text{ km} = 28.79 \text{ dB}$$
+$$\ans{L_{atm,\,10\degree} = 28.79 \text{ dB}}$$
+}
 \subproblem{iv.}{Estimate the received power at receiver at nadir and 10 deg elevation.}
+\solution{
+$$P_r = P_t + G_t + G_r - L_{FSPL} - L_{atm}$$
+
+Nadir:
+$$P_r = 10\text{ dBW} + 4\text{ dBi} + 6\text{ dBi} - 177.55\text{ dB} - 5\text{ dB}$$
+$$\ans{P_{r} = -162.55 \text{ dBW}}$$
+
+$Elevation = 10\degree$:
+$$P_r = 10\text{ dBW} + 4\text{ dBi} + 6\text{ dBi} - 187.75\text{ dB} - 28.79\text{ dB}$$
+$$\ans{P_{r} = -196.54 \text{ dBW}}$$
+}
 \subproblem{v.}{What Doppler shift is expected at receiver for a) nadir and b) 10 deg elevation?}
+\solution{
+Orbital velocity: $v = \sqrt{\mu/(R_e+h)}$, with $\mu = 3.986\times10^{14}\ m^3/s^2$, $R_e = 6371$ km, $h=600$ km.
+
+Doppler shift: $$f_d = \frac{v\,R_e\,f\,\cos(El)}{c\,(R_e+h)}$$
+
+a) Nadir ($El=90\degree$): $\cos(90\degree)=0$
+$$\ans{f_{d} \approx 0 \text{ Hz}}$$
+
+b) $Elevation = 10\degree$:
+$$\ans{f_{d} = 680.58 \text{ kHz}}$$
+}
 
 \problem{2.0}{Generate CNR vs BER performance curves for QPSK \& BPSK digital modulation, calculate (using erfc(x)) or use tables in appendix C, ranging from 5 dB to 15 dB CNR to estimate Bit Error Rates.}
+\solution{
+$$Q(x) = \frac{1}{2}\text{erfc}\left(\frac{x}{\sqrt{2}}\right)$$
+$$\text{BER}_{\text{BPSK}} = Q\left(\sqrt{2\cdot{\text{CNR}}}\right)$$
+$$\text{BER}_{\text{QPSK}} = Q\left(\sqrt{\text{CNR}}\right)$$
+\centering
+\includegraphics[width=0.7\textwidth]{ber_vs_cnr.png}
+}
 
 \problem{3.0}{Frequency translation: make downconverter/upconverter calculations. A downlink of carrier frequency of 4.864 GHz needs to translate by receiver to intermediate frequency (IF) of 70.000 MHz (followed by band-pass filter). Find:}
 \subproblem{a.}{The mixer (local oscillator) frequency needed to translate the signal (4.864 GHz -> 70.000 MHz).}
+\proof{
+$$f_{IF} = |f_{RF} - f_{LO}| \implies f_{LO} = f_{RF} \pm f_{IF}$$
+$$f_{LO} = 4.864 \mp 0.070 \text{ GHz}$$
+$$\ans{f_{LO} = 4.794 \text{ GHz (low-side)} \text{ or } 4.934 \text{ GHz (high-side)}}$$
+}
 \subproblem{b.}{Equivalent Noise System Temperature of the Circuit above (device Gain cited in dB and linear values, i.e. 30 dB [1000]).}
+\solution{
+Conversion from dB to linear:
+$$G_{LNA} = 10^{30/10} = 1000 \qquad G_{Mix} = 10^{-3/10} \approx 0.501$$
+
+System noise temperature:
+$$T_S = T_{rf} + T_{in} + \frac{T_m}{G_{LNA}} + \frac{T_{IF}}{G_{LNA}\,G_{Mix}}$$
+$$T_S = 15\text{ K} + 25\text{ K} + \frac{30\text{ K}}{1000} + \frac{150\text{ K}}{(1000)(0.501)}$$
+$$\ans{T_S \approx 40.33 \text{ K}}$$
+}
 
 \problem{4.0}{A parabolic dish antenna has a 65\% aperture efficiency, 1.2 meter diameter intended for 4.2 GHz signals, and the system noise temperature is 75 K (need to convert to dB-K). Find:}
 \subproblem{a.}{Antenna Gain (dB)}
+\proof{
+$$G = 10\log_{10}\left[\eta\left(\frac{\pi D}{\lambda}\right)^2\right]$$
+$$\lambda = \frac{c}{f} = \frac{3\times10^8\text{ m/s}}{4.2\times10^9\text{ Hz}}$$
+$$\ans{G = 32.58 \text{ dB}}$$
+}
 \subproblem{b.}{Beamwidth (deg)}
+\proof{
+$$\theta_{3dB} \approx \frac{75\,\lambda}{D}$$
+$$\ans{\theta_{3dB} \approx 4.46\circ}$$
+}
 \subproblem{c.}{G/T (dB-K)}
+\proof{
+$$T_{dB} = 10\log_{10}(75\text{ K}) \approx 18.75 \text{ dB-K}$$
+$$G/T = G_{dB} - T_{dB} = 32.58\text{ dB} - 18.75\text{ dB-K}$$
+$$\ans{G/T \approx 13.83 \text{ dB-K}}$$
+}
 
 \problem{5.0}{Solar radiation creates a power density of 1.39 kW/$m^2$ which is available for power conversion for satellites for operating.}
 \subproblem{a.}{Assuming a 25\% conversion efficiency and 10 $m^2$ of active area for solar panels, what power is available for total operations?}
+\proof{
+$$P_{avail} = \frac{\text{Power}}{\text{Area}} \cdot \text{Area} \cdot \text{Efficiency} = (1.39\text{ kW/m}^2)(10\text{ m}^2)(0.25)$$
+$$\ans{P_{avail} = 3.475 \text{ kW}}$$
+}
 \subproblem{b.}{If 2 kW are needed for satellite overhead (control circuits, maintenance functions), what power (Pt) is still available for transponders?}
+\proof{
+$$P_t = P_{avail} - P_{overhead} = 3.475\text{ kW} - 2\text{ kW}$$
+$$\ans{P_t = 1.475 \text{ kW}}$$
+}
 
 \end{document}
